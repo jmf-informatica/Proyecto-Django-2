@@ -1,0 +1,176 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>
+    {% block Titulo %}
+    {% endblock Titulo %}
+  </title>
+
+   {% block head %}
+
+  <!--Select2 --CDN CSS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+
+  <!--DataTable Jquery--CDN-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+
+  <!-- Bootstarp-v4.3.1-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- Custom fonts for this template-->
+   <link href="{% static 'Base/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="{% static 'Base/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'Base/css/sb-admin.css' %}" rel="stylesheet">
+
+  <!--CSS Peronsalizado-->
+  <link href="{% static 'Base/css/mycss.css' %}" rel="stylesheet">
+  <link href="{% static 'registration/css/registration.css' %}" rel="stylesheet">
+
+  {% endblock %}
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="{% url 'Aplicacion:home' %}">Inicio</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars" style="float: left"></i>
+    </button>
+
+
+
+    <!-- Navbar -->
+    <ul class="nav navbar-top-links navbar-right">
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="True">
+          <i class="fas fa-user-circle fa-fw"></i>
+          {{user.username}}
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><a href="{% url 'profile' %}"><i class="fa fa-sign-out fa-fw"></i>Mi Perfil</a>
+          </li>
+          <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i>Cerrar sesión</a>
+          </li>
+        </ul>
+
+        </li>
+      </ul>
+
+    </nav>
+
+  <div id="wrapper">
+
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'Aplicacion:home'%}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Inicio</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Planes de Hosting</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a href="{%url 'pruebas:lista_productos' %}" class="dropdown-item">Listado de precios</a>
+          {% if perms.pruebas.add_productos %}
+          <a href="{%url 'pruebas:producto_create' %}" class="dropdown-item">Agregar producto</a>
+          {% endif %}
+        </div>
+      </li>
+
+    </ul>
+
+<div id="content-wrapper">
+
+  <div class="container-fluid">
+
+        
+    {% if messages %}
+    {% for message in messages %}
+    <ul class="messagelist">
+    <li>{{message|safe}}</li>
+    </ul>
+    <hr>
+    {% endfor %}
+    {% endif %}
+        
+
+{%block Contenido%}
+  <h1>Blank Page</h1>
+<hr>
+  <p>This is a great starting point for new custom pages.</p>
+{%endblock Contenido%}
+  </div>
+<!-- /.container-fluid -->
+
+<!-- Sticky Footer -->
+<footer class="sticky-footer">
+  <div class="container my-auto">
+    <div class="copyright text-center my-auto">
+      <span><u><b> ©Copyright 2019 JMF. Todos los derechos reservados | Rosario | Santa Fe |
+            Argentina</u></b></span>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!--Carga de Jquery 3.4-->
+  <script src="{% static 'Base/jquery/jquery-3.4.0.js' %}"></script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'Base/js/jquery.min.js' %}"></script>
+  <script src="{% static 'Base/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'Base/js/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'Base/js/sb-admin.min.js' %}"></script>
+
+  <!--CDN Jquery para select2-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+
+  <!--CDN DataTables-jquery-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> <!--Estilo BootStrap 4-->
+  
+  <!--JS Perosnalizado-->
+  <script src="{% static 'Base/js/mijs.js' %}"></script>
+
+  
+</body>
+
+</html>

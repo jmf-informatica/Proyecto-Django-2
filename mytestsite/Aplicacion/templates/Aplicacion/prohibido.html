@@ -1,0 +1,29 @@
+{%extends 'base/base.html'%}
+
+<!--Bloque para modificar el titulo del sitio -->
+{%block Titulo%}
+Pagina Prohibida
+{%endblock Titulo%}
+
+<!--Bloque para modificar contenido-->
+
+{%block Contenido%}
+<div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.htm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Página prohibida</font></font></a>
+          </li>
+          <li class="breadcrumb-item active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">error 403</font></font></li>
+        </ol>
+
+        <!-- Page Content -->
+        <h1 class="display-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sin permisos</font></font></h1>
+        <p class="lead"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No cuentas con los permisos suficientes para esta sección </font><font style="vertical-align: inherit;">Puede
+           </font></font><a href="javascript:history.back()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">volver</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          a la página anterior o
+           </font></font><a href="{% url 'Aplicacion:home' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">regresar a casa</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+
+      </div>
+{%endblock Contenido%}

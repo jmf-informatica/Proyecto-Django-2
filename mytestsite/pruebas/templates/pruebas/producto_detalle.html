@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% block Titulo %}
+Detalle
+{% endblock Titulo %}
+
+{% block Contenido %}
+<a href="{% url 'pruebas:lista_productos' %}" class="btn btn-success"><span class="fa fa-undo"></span> Volver</a>
+<hr>
+<h2 class="mb-4 text-center text-primary"><span style="color:black">Plan ID:</span> {% for p in productos %}{{p.id}}{% endfor %}</h2>
+
+<hr>
+<div style="margin: 0 auto; text-align: center;">
+  <div class="panel-body">
+    <table  width="100%" class="table table-bordered table table-hover table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th> 
+          <th>Periodo</th>
+          <th>Pais</th>
+          <th>Precio Compra</th>
+          <th>Precio Renovación</th>
+         </tr>
+      </thead>
+        <tbody>
+          {% for p in productos %}
+            <tr>
+                <td>{{p.nombre}}</td>
+                <td>{{p.periodo}}</td>
+                <td>{{p.pais}}</td>
+                <td>${{p.PrecioCompra|floatformat:2}}</td>
+                <td>${{p.PrecioRenovacion|floatformat:2}}</td>
+            </tr>
+                        
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default" style="text-align: center">
+    <div class="panel-heading">
+      <h3 class="panel-title">Descripcion del producto:</h3>
+    </div>
+    <div class="panel-body">
+      {{p.descripcion}}
+    </div>
+  </div>
+                   
+  <hr>
+  {% if perms.pruebas.change_productos%}
+  <div class='mb-5 text-center'>
+    <a href="{% url 'pruebas:producto_edit' p.id %}" class="btn btn-primary"><span class="fa fa-edit"></span> Edit</a>
+  {% if perms.pruebas.delete_productos%}
+    <a href="{% url 'pruebas:producto_del' p.id %}" class="btn btn-danger"><span class="fa fa-trash"></span> Delete</a>
+  </div>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+
+{%endblock Contenido%}

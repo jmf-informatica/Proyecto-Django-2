@@ -1,0 +1,39 @@
+{%extends 'base/base.html'%}
+
+<!--Bloque para modificar el titulo del sitio -->
+{%block Titulo%}
+JMF-Informatica
+{%endblock Titulo%}
+
+<!--Bloque para modificar contenido-->
+
+{%block Contenido%}
+<div class='text-center'>
+        <h1>Bienvenido a mi aplicación Web</h1>
+                <hr>
+                <p style='font-family: Lobster; font-size:18px;'>Un sitio web que cuenta con autenticación de usuario, restablecimiento de contraseña y un perfil que te permite 
+                modificar el email y la contraseña, establecer un avatar y escribir un pequeña descripción.
+                También cuenta con una implementación CRUD con permisos de usuarios y una administracion general para superusuarios.</p>
+                <h3>Tus permisos de usuario son:</h3>
+                {% if perms.pruebas.view_productos == True %}
+                <p>Permiso de ver: <span class='text-success'> {{perms.pruebas.view_productos}}</span></p>
+                {% else %}
+                <p>Permiso de ver: <span class='text-danger'> {{perms.pruebas.view_productos}}</span></p>
+                {% endif %}
+                {% if perms.pruebas.add_productos == True %}
+                <p>Permiso de agregar:<span class='text-success'> {{perms.pruebas.add_productos}}</span></p>
+                {% else %}
+                <p>Permiso de agregar:<span class='text-danger'> {{perms.pruebas.add_productos}}</span></p>
+                {% endif %}
+                {% if perms.pruebas.change_productos == True %}
+                <p>Permiso de editar:<span class='text-success'> {{perms.pruebas.change_productos}}</span></p>
+                {% else %}
+                <p>Permiso de editar:<span class='text-danger'> {{perms.pruebas.change_productos}}</span></p>
+                {% endif %}
+                {% if perms.pruebas.delete_productos == True %}
+                <p>Permiso de eliminar:<span class='text-success'> {{perms.pruebas.delete_productos}}</span></p>
+                {% else %}
+                <p>Permiso de eliminar:<span class='text-danger'> {{perms.pruebas.delete_productos}}</span></p>
+                {% endif %}
+</div>
+{%endblock Contenido%}

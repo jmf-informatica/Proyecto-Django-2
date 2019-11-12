@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block extrastyle %}
+
+    <style>
+        #header { background: black;}
+        .module caption { background: black;}
+        a.section:link, a.section:visited {color: #f5cc27;}
+        #header #user-tools a{color: #f5cc27;}
+        #user-tools a:focus, #user-tools a:hover {border-bottom-color:white;}
+    </style>
+
+{% endblock %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">
+
+        <img src="{% static 'Base/img/logo_transparente.png' %}" height='70px' alt="">
+        &nbsp;&nbsp;{{ site_header|default:_('Django administration') }}
+    </a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

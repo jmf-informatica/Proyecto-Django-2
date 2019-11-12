@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>JMF - Login</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'Base/css/all.min.css' %}" rel="stylesheet  type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'Base/css/sb-admin.css' %}" rel="stylesheet">
+
+</head>
+ 
+<body class="bg-dark">
+
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+        <small class="text-danger">
+          {% if form.errors %}
+            {% for field in form %}
+              {% if field.errors %}
+                {% for error in field.errors %}
+                  {{error|escape}}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            {% if form.non_field_errors %}
+              {% for error in form.non_field_errors %}
+                {{error|escape}}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+
+        </small>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" id="id_username" class="form-control" name="username" placeholder="Username" required="required" autofocus="autofocus">
+              <label for="inputEmail">Nombre de Usuario</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="password" id="id_password" class="form-control" name="password" placeholder="Password" required="required">
+              <label for="inputPassword">Password</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <!--
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me">
+                Remember Password
+              </label>
+            </div>
+            -->
+          </div>
+          <button type="submit" class="btn btn-lg btn-success btn-block">Ingresar</button>
+        </form>
+        <div class="text-center"><br>
+          <a class="d-block small" href="{% url 'password_reset' %}">Olvido la contraseña?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'Base/js/jquery.min.js' %}"></script>
+  <script src="{% static 'Base/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'Base/js/jquery.easing.min.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block Titulo %} Mi perfil {% endblock %}
+
+{% block Contenido %}
+{% load static %}
+
+<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2 class="mb-4 text-center">Perfil de usuario</h2></div>
+          <div class="panel-body">
+            <div class="row">
+              <!-- Previa del avatar -->
+              <div class="col-md-2">
+                {% if request.user.profile.avatar %} <!-- Si existe un avatar, mostrar imagen cargada-->
+                  <img src="{{request.user.profile.avatar.url}}" class="img-fluid">
+                  <p class="mt-1">¿Borrar? <input type="checkbox" id="avatar-clear" name="avatar-clear"></p>
+                {% else %}
+                  <img src="{% static 'registration/img/no-avatar-opt.jpg' %}" class="img-fluid">
+                {% endif %}
+              </div>
+            <!-- Formulario -->
+            <div class="col-md-10">
+              <input type="file" name="avatar" class="form-control-file mb-3" id="id_avatar">
+              {{ form.bio }}
+              <input type="email" class="form-control mt-3" value="{{request.user.email}}" readonly>
+              <p class="mt-3" style="text-align: center;"><a href="{% url 'profile_email' %}"> Cambiar email</a></p>
+              <p class="mt-3" style="text-align: center;"><a href="{% url 'password_change' %}"> Cambiar contraseña</a></p>
+              <input type="submit" class="btn btn-primary btn-block mt-3" value="Actualizar">
+              <a href="javascript:history.back()" class="btn btn-danger btn-block mt-3"><span class="fa fa-undo"></span>Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</form>
+
+{% endblock %}
+

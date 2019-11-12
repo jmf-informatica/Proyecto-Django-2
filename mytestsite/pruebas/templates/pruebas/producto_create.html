@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block Titulo %} Creación y Edición de producto {% endblock %}
+
+{% block Contenido %}
+
+<form id="form-create" action="" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2 class="mb-4 text-center">Editar/Crear producto</h2></div>
+        <div class="panel-body">
+          {%csrf_token%}
+          {{ form.as_p }}
+          <div class="mb-5 text-center">
+            <button type="submit" id="guardar" class="btn btn-danger"><span class="fa fa-save"></span>Guardar</button>
+            <a href="{% url 'pruebas:lista_productos' %}" class="btn btn-success"><span class="fa fa-undo"></span>Cancelar</a>
+          </div>
+        </div>
+      </div>
+
+</form>
+
+{%endblock Contenido%}

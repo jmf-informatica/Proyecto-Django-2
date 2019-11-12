@@ -1,0 +1,44 @@
+{%extends 'base/base.html'%}
+
+<!--Bloque para modificar el titulo del sitio -->
+{% block Titulo %}
+Lista de productos
+{% endblock Titulo %}
+
+{% block Contenido %}
+<h2 class="mb-4 text-center">Lista de precios</h2>
+<div id="Contenedor"></div>
+        <hr>
+    <div style="margin: 0 auto; text-align: center;">
+        <div class="panel-body">
+                <table width="100%" class="table table-bordered table table-hover table table-striped" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th> 
+                            <th>Periodo</th>
+                            <th>Pais</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Renovación</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in productos %}
+                            <tr>
+                                <td>{{p.nombre}}</td>
+                                <td>{{p.periodo}}</td>
+                                <td>{{p.pais}}</td>
+                                <td>${{p.PrecioCompra|floatformat:2}}</td>
+                                <td>${{p.PrecioRenovacion|floatformat:2}}</td>
+                                <td><a href="{% url 'pruebas:detalle_producto' p.id %}"> Ver detalle</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table></div></div>
+                  
+                  <div id="div-btn" align='center' style="display: none">
+                    <button type="button" class="btn btn-primary">Editar</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                  </div>
+
+{% endblock Contenido %}
