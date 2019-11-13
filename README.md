@@ -1,20 +1,20 @@
-# Proyecto-django-2
-* Sitio con implementación CRUD
-* Autenticación de usuario, restablecimiento de contraseña
-* Perfil de usuarios que te permite modificar el email y la contraseña, establecer un avatar y escribir un pequeña descripción. 
+# Funcionalidades:
+* Sitio con implementaciÃ³n CRUD
+* AutenticaciÃ³n de usuario, restablecimiento de contraseÃ±a
+* Perfil de usuarios que te permite modificar el email y la contraseÃ±a, establecer un avatar y escribir un pequeÃ±a descripciÃ³n. 
 * Permisos de usuarios
 * Administracion general para superusuarios.
 
 ## Permisos de usuarios:
 
 ### Usuario con privilegios:
-Este usuario cuenta con permisos de agregra, editar y eliminar. Ademas pertenece al staff que le brinda la posibilidad de acceso al admin.
+Este usuario cuenta con permisos de agregrar, editar y eliminar. Ademas pertenece al staff que le brinda la posibilidad de acceso al admin.
 
 * **Nombre de usuario:** Supervisor
-* **Contraseña:** Sup.1234
+* **ContraseÃ±a:** Sup.1234
 
 ### Usuario restringido:
 Este usuario cuenta con permisos de editar y eliminar, restringiendo su posibilidad de agregar y de acceso al admin.
 
 * **Nombre de usuario:** test
-* **Contraseña:** Test.123
+* **ContraseÃ±a:** Test.123
