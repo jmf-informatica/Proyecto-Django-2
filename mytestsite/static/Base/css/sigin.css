@@ -1,0 +1,30 @@
+html,body{
+    background-image: url(../img/fondo-1024x679.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+    
+    .container{
+    height: 100%;
+    align-content: center;
+    }
+
+
+.card{
+    max-width: 450px; 
+    margin: 0 auto;
+    margin-top: auto;
+    margin-bottom: auto;    
+    width: 450px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+    }
