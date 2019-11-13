@@ -16,5 +16,5 @@ Este usuario cuenta con permisos de agregrar, editar y eliminar. Ademas pertenec
 ### Usuario restringido:
 Este usuario cuenta con permisos de editar y eliminar, restringiendo su posibilidad de agregar y de acceso al admin.
 
-* **Nombre de usuario:** test
+* **Nombre de usuario:** Usuario1
 * **Contraseña:** Test.123
